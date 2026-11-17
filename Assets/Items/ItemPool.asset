@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ItemPool
   m_EditorClassIdentifier: Assembly-CSharp::ItemPoolSO
   items:
-  - {fileID: 11400000, guid: 4ed8f7da27bff49f9bb7e6e3d6737e21, type: 2}
+  - {fileID: 11400000, guid: 549f83211a5be154c94cfc7c73b067e7, type: 2}

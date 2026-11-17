@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class PlayerControls : MonoBehaviour
 {
     Rigidbody2D rb;
+    Animator anim;
 
     [Header("Stats & Attributes")]
     [SerializeField] float atkRange;
@@ -27,6 +28,8 @@ public class PlayerControls : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -39,7 +42,18 @@ public class PlayerControls : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         facingDirection = context.action.ReadValue<Vector2>();
-
+        float xaxis = facingDirection.x;
+        float yaxis = facingDirection.y;
+        int direction = 0;
+        if(Mathf.Abs(xaxis) > Mathf.Abs(yaxis))
+        {
+            direction = xaxis > 0 ? 3 : 2;
+        } 
+        else 
+        {
+            direction = yaxis > 0 ? 1 : 0;
+        }
+        anim.SetInteger("Direction", direction);
         rb.linearVelocity = speed * facingDirection;
     }
 
